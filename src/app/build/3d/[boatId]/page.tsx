@@ -5,6 +5,9 @@ import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import SketchfabViewer from "@/components/SketchfabViewer";
+import MetallicColorChoices from "@/components/MetallicColorChoices";
+import UpholsteryColorChoices from "@/components/UpholsteryColorChoices";
+import AmenitiesSection from "@/components/AmenitySection";
 
 export default function BuildBoat3DPage({ params }: { params: { boatId: string } }) {
   // Replace this with logic to pick a model based on boatId and any query params.
@@ -33,7 +36,7 @@ export default function BuildBoat3DPage({ params }: { params: { boatId: string }
       </Head>
 
       {/* Navigation Bar Across the Top */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light w-100">
         <div className="container-fluid">
           <Link href="/" className="navbar-brand">
             {selectedBoatName || "Boat Builder"}
@@ -50,21 +53,13 @@ export default function BuildBoat3DPage({ params }: { params: { boatId: string }
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav w-100 d-flex justify-content-around">
               <li className="nav-item">
                 <button
-                  className={`nav-link btn btn-link ${activeTab === "power" ? "active" : ""}`}
-                  onClick={() => setActiveTab("power")}
+                  className={`nav-link btn btn-link ${activeTab === "exterior" ? "active" : ""}`}
+                  onClick={() => setActiveTab("exterior")}
                 >
-                  Power
-                </button>
-              </li>
-              <li className="nav-item">
-                <button
-                  className={`nav-link btn btn-link ${activeTab === "paint" ? "active" : ""}`}
-                  onClick={() => setActiveTab("paint")}
-                >
-                  Paint
+                  Exterior
                 </button>
               </li>
               <li className="nav-item">
@@ -77,10 +72,18 @@ export default function BuildBoat3DPage({ params }: { params: { boatId: string }
               </li>
               <li className="nav-item">
                 <button
-                  className={`nav-link btn btn-link ${activeTab === "options" ? "active" : ""}`}
-                  onClick={() => setActiveTab("options")}
+                  className={`nav-link btn btn-link ${activeTab === "amenities" ? "active" : ""}`}
+                  onClick={() => setActiveTab("amenities")}
                 >
-                  Options
+                  Amenities
+                </button>
+              </li>
+              <li className="nav-item">
+                <button
+                  className={`nav-link btn btn-link ${activeTab === "power" ? "active" : ""}`}
+                  onClick={() => setActiveTab("power")}
+                >
+                  Power
                 </button>
               </li>
               <li className="nav-item">
@@ -106,28 +109,28 @@ export default function BuildBoat3DPage({ params }: { params: { boatId: string }
 
           {/* Right Column: Customization Selection */}
           <div className="col-md-4 p-4 border-start">
-            {activeTab === "power" && (
+            {activeTab === "exterior" && (
               <div>
-                <h5>Power Options</h5>
-                <p>Select your engine or outboard configuration.</p>
-              </div>
-            )}
-            {activeTab === "paint" && (
-              <div>
-                <h5>Paint Options</h5>
-                <p>Choose your hull color and finish.</p>
+                <h5>Choose your exterior</h5>
+                <MetallicColorChoices />
               </div>
             )}
             {activeTab === "interior" && (
               <div>
-                <h5>Interior Options</h5>
-                <p>Select interior color and materials.</p>
+                <h5>Choose your Interior</h5>
+                <UpholsteryColorChoices />
               </div>
             )}
-            {activeTab === "options" && (
+            {activeTab === "amenities" && (
               <div>
-                <h5>Options & Amenities</h5>
-                <p>Choose additional features and extras.</p>
+                <h5>Choose your Amenities</h5>
+                <AmenitiesSection />
+              </div>
+            )}
+            {activeTab === "power" && (
+              <div>
+                <h5>Choose your power</h5>
+                
               </div>
             )}
             {activeTab === "summary" && (
