@@ -1,4 +1,3 @@
-// src/components/ClassSelection.tsx
 "use client";
 import ClassBox from "./ClassBox";
 

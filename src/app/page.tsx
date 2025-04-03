@@ -373,23 +373,35 @@ export default function LandingPage() {
             id="vclass-length"
             className="d-none d-flex justify-content-center gap-3 mt-5 mb-50"
           >
-            <a id="v700t" className="btn btn-primary btn-responsive px-4 w-25">
-              31 FT
-            </a>
-            <a id="v25QS" className="btn btn-primary btn-responsive px-4 w-25">
+             <Link
+                id="v700t" href={`/build/3d/vclass?length=31`}
+                className="btn btn-primary btn-responsive px-4 w-25"
+              >
+                31 FT
+              </Link>
+            <Link
+              id="v25QS" href={`/build/3d/vclass?length=25`}
+              className="btn btn-primary btn-responsive px-4 w-25"
+            >
               25 FT
-            </a>
+            </Link>
           </div>
           <div
             id="lclass-length"
             className="d-none d-flex justify-content-center gap-3 mt-5 mb-50"
           >
-            <a id="L23QS" className="btn btn-primary btn-responsive px-4 w-25">
-              23 FT
-            </a>
-            <a id="L25QS" className="btn btn-primary btn-responsive px-4 w-25">
+            <Link
+                id="L23QS" href={`/build/3d/lclass?length=23`}
+                className="btn btn-primary btn-responsive px-4 w-25"
+              >
+                23 FT
+              </Link>
+            <Link
+              id="L25QS" href={`/build/3d/lclass?length=25`}
+              className="btn btn-primary btn-responsive px-4 w-25"
+            >
               25 FT
-            </a>
+            </Link>
           </div>
         </section>
 
