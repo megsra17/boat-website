@@ -71,5 +71,6 @@ export default function MetallicColorChoices() {
         </div>
       )}
     </div>
+    
   );
 }

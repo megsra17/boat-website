@@ -184,9 +184,8 @@ export default function AmenitiesSection() {
       ))}
 
       {/* Summary / Total Price */}
-      <div className="mt-4 p-3 border-top">
-        <h5>Selected Amenities Total: ${totalPrice.toLocaleString()}</h5>
-        <button className="btn btn-primary mt-2">Next Step / Checkout</button>
+      <div className="mt-4 p-3">
+        <button className="btn btn-primary w-100">Next Step</button>
       </div>
     </div>
   );
