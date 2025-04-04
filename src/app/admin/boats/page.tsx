@@ -1,5 +1,7 @@
-// app/admin/boats/index.tsx
-import { useSession, signIn } from "next-auth/react";
+// app/admin/boats/page.tsx
+"use client";
+
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -7,8 +9,7 @@ interface Boat {
   _id: string;
   name: string;
   description?: string;
-  category: string; // e.g., "vclass", "lclass", etc.
-  // other fields such as imageUrl, modelUid, etc.
+  category: string;
 }
 
 export default function AdminBoatsPage() {
@@ -37,7 +38,6 @@ export default function AdminBoatsPage() {
     );
   }
 
-  // Filter boats by category
   const filteredBoats =
     activeCategory === "all"
       ? boats
@@ -45,9 +45,13 @@ export default function AdminBoatsPage() {
 
   return (
     <div className="container">
-      <h1 className="my-4">Admin Dashboard - Boats</h1>
-
-      {/* Sub-navigation for categories */}
+      <h1 className="my-4">Admin Dashboard</h1>
+      <button
+        className="btn btn-secondary"
+        onClick={() => signOut({ callbackUrl: "/login" })}
+      >
+        Logout
+      </button>
       <ul className="nav nav-tabs mb-3">
         <li className="nav-item">
           <button
@@ -77,10 +81,7 @@ export default function AdminBoatsPage() {
             L Class
           </button>
         </li>
-        {/* Add more categories as needed */}
       </ul>
-
-      {/* List of Boats */}
       <div>
         {filteredBoats.length === 0 ? (
           <p>No boats found in this category.</p>

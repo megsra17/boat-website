@@ -25,8 +25,11 @@ const handler = NextAuth({
   callbacks: {
     async redirect({ baseUrl }) {
       // Redirect to your dashboard page after login.
-      return `${baseUrl}/admin/dashboard`;
+      return `${baseUrl}/admin/boats`;
     },
+  },
+  pages: {
+    signIn: "/login",
   },
 });
 
